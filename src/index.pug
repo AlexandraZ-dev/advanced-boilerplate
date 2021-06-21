@@ -8,8 +8,20 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Portfolio | main page
   body
-    .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+    .main-slide
+      header.header
+        .container
+          .header__wrap.fullscreen-section
+            .header__top
+              span.logo ЖА
+              //.header__nav
+              +nav('nav', ["Обо мне", "Навыки", "Работы", "Отзывы"])
+              //.header__socials
+              +socials('socials')
+            .header__middle
+              h1.header__title Жданова <br> Александра
+              span.header__subtitle Личный сайт <br> веб-разработчика
+            .header__bottom
+              button.header__button
+                span.header__prompt Скролл
+                +icon('scroll','scroll')
