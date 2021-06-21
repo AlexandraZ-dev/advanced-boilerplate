@@ -14,9 +14,7 @@ html(lang="en")
           .header__wrap.fullscreen-section
             .header__top
               span.logo ЖА
-              //.header__nav
               +nav('nav', ["Обо мне", "Навыки", "Работы", "Отзывы"])
-              //.header__socials
               +socials('socials')
             .header__middle
               h1.header__title Жданова <br> Александра
@@ -25,3 +23,32 @@ html(lang="en")
               button.header__button
                 span.header__prompt Скролл
                 +icon('scroll','scroll')
+
+      section.about
+        .container
+          .about__wrap
+            .about__grid
+              .about__child.about__child_first.about__avatar
+                +image('content/me.png','avatar', 'avatar')
+              .about__child.about__child_second.about__content
+                span.section__descr.about__descr Привет, меня зовут
+                h2.about__title Жданова Александра
+                p.section__descr.about__descr Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+              .about__child.about__child_third.about__info
+                table.about__table
+                  tr.about__row
+                    td.about__cell.about__cell_light  Проживаю
+                    td.about__cell.about__cell_bold  Казань
+                  tr.about__row
+                    td.about__cell.about__cell_light  Возраст
+                    td.about__cell.about__cell_bold  30
+                  tr.about__row
+                    td.about__cell.about__cell_light  Родилась
+                    td.about__cell.about__cell_bold  4 августа 1990 года
+              p.about__child.about__child_fourth.about__prompt.section__descr Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+
+      .main-slide__triangle
+        .triangle
+          svg.triangle__child(viewBox="0 0 100 100" preserveAspectRatio="none")
+            polygon(fill="#06001e" points="0,0 100,0 78,70")
+            polygon(fill="#06001e" points="0,0 100,0 78,70")
