@@ -65,6 +65,7 @@ html(lang="en")
         .skills__bottom
           .skills__img
             +image('guitar.png','skills__guitar','Гитара')
+            +image('shadow.png','skills__bg',"Тень")
 
           ul.metrics
             -
@@ -85,7 +86,6 @@ html(lang="en")
                           stop(offset='0%' stop-color='#243FE5')
                           stop(offset='100%' stop-color='#0788f2')
                         .metrics__list-title #{metric[0]}
-              //+image('skills-bg.png','skills__bg',"Граффити")
 
     section.portfolio
       .container
@@ -126,6 +126,31 @@ html(lang="en")
                       .slider-work__link-icon
                         +icon(`link`,'link-icon')
                       .slider-work__link-title Посмотреть сайт
+
+    section.feedback.feedback__child
+          .container
+            .feedback__wrap
+              .feedback__top
+                h2.feedback__title.section__title.section__title_light Что обо мне говорят
+                .slider-feedback__nav
+                  button.slider__button.slider-feedback__button.slider-feedback__button-prev <
+                  button.slider__button.slider__button_disabled.slider-feedback__button.slider-feedback__button-next >
+              .feedback__slider
+                .slider-feedback
+                  -
+                    var feedback = [
+                      ['Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!', 'teacher-1.png', 'Ковальчук Дмитрий', 'Основатель Loftschool'],
+                      ['Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах', 'teacher-2.png', 'Владимир Сабанцев', 'Преподаватель']
+                    ]
+                  each item in feedback
+                    .slider-feedback__child
+                      p.slider-feedback__quote #{item[0]}
+                      .slider-feedback__info
+                        .slider-feedback__info-avatar
+                          +image(`${item[1]}`,'slider-feedback__image',`Фото: ${item[1]}`)
+                        .slider-feedback__info-text
+                          p.slider-feedback__info-name #{item[2]}
+                          p.slider-feedback__info-post #{item[3]}
 
     footer.footer
       .container
