@@ -126,41 +126,24 @@ html(lang="en")
                       .slider-work__link-icon
                         +icon(`link`,'link-icon')
                       .slider-work__link-title Посмотреть сайт
-    //section.portfolio
-    //  .container
-    //      span.portfolio__title.section__title Мои работы
-    //      .portfolio__slider
-    //        .slider-work
-    //          -
-    //            var works = [
-    //              ['work-1', 'Сайт школы образования', ['HTML', 'CSS', 'Javasript'], 'Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!', 'https://loftschool.com']
-    //            ]
-    //          each item in works
-    //            .slider-work__left
-    //              .slider-work__main
-    //                +image(`${item[0]}.jpg`,'slider-work__img',`${item[1]}`)
-    //                - for (var i = 0; i < works.length; i++)
-    //                .slider-work__main-number= 2
-    //              .slider-work__status
-    //                button.slider-work__status-child.slider-work__status-child_active
-    //                  +image(`${item[0]}.jpg`,'slider-work__preview',`${item[1]}`)
-    //                button.slider-work__status-child
-    //                  +image(`work-2.jpg`,'slider-work__preview',`${item[1]}`)
-    //                button.slider-work__status-child
-    //                  +image(`work-3.jpg`,'slider-work__preview',`${item[1]}`)
-    //                button.slider-work__status-child
-    //                  +image(`work-4.jpg`,'slider-work__preview',`${item[1]}`)
-    //                .slider-work__nav
-    //                  button.slider__button.slider-work__button.status-work__button-next >
-    //                  button.slider__button.slider__button_disabled.slider-work__button.status-work__button-prev.slider-work__button_disabled <
-    //            .slider-work__right
-    //              .slider-work__info
-    //                .slider-work__tool
-    //                  each tool in item[2]
-    //                    span.slider-work__tool-child #{tool}
-    //                span.slider-work__info-title #{item[1]}
-    //                p.slider-work__info-descr.section__descr #{item[3]}
-    //                a(href=`${item[4]}` target="_blank").slider-work__link
-    //                  .slider-work__link-icon
-    //                    +icon(`link`, 'link-icon')
-    //                  .slider-work__link-title Посмотреть сайт
+
+    footer.footer
+      .container
+        .footer__wrap
+          .footer__left
+            span.footer__copyright © 2021
+            .footer__author
+              h3.footer__author-name Жданова Александра
+              span.footer__author-project Личный сайт <br> веб-разработчика
+          .footer__right
+            .footer__nav
+              +nav('menu', ["Обо мне", "Навыки", "Работы", "Отзывы"])
+            .footer__info
+              .footer__info-project
+                p.footer__info-descr Этот сайт я сделала в рамках обучения в Школе онлайн образования Loftschool
+                .footer__info-social
+                  +socials('socials')
+              .footer__info-project
+                .footer__quote
+                  p.footer__info-descr Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                span.footer__quote-author Martin Golding
