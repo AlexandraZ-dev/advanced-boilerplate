@@ -6,49 +6,170 @@ html(lang="en")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title Portfolio | main page
+    title Portfolio | Alexandra
   body
-    .main-slide
-      header.header
-        .container
-          .header__wrap.fullscreen-section
-            .header__top
-              span.logo ЖА
-              +nav('nav', ["Обо мне", "Навыки", "Работы", "Отзывы"])
-              +socials('socials')
-            .header__middle
-              h1.header__title Жданова <br> Александра
-              span.header__subtitle Личный сайт <br> веб-разработчика
-            .header__bottom
-              button.header__button
-                span.header__prompt Скролл
-                +icon('scroll','scroll')
+    .welcome-section
+      section.hero
+        .container.hero__container
+          header.header
+            a.logo(href='#') ЖА
+            +nav('menu', ["Обо мне", "Навыки", "Работы", "Отзывы"])
+            +socials('socials')
+
+          .userinfo
+            .userinfo__title Личный сайт <br> веб-разработчика
+            .userinfo__name Жданова <br> Александра
+
+          .hero__bottom-buttons
+            button.scroll-down-btn Скролл
+            +icon('scroll','scroll')
 
       section.about
-        .container
-          .about__wrap
-            .about__grid
-              .about__child.about__child_first.about__avatar
-                +image('content/me.png','avatar', 'avatar')
-              .about__child.about__child_second.about__content
-                span.section__descr.about__descr Привет, меня зовут
-                h2.about__title Жданова Александра
-                p.section__descr.about__descr Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-              .about__child.about__child_third.about__info
-                table.about__table
-                  tr.about__row
-                    td.about__cell.about__cell_light  Проживаю
-                    td.about__cell.about__cell_bold  Казань
-                  tr.about__row
-                    td.about__cell.about__cell_light  Возраст
-                    td.about__cell.about__cell_bold  30
-                  tr.about__row
-                    td.about__cell.about__cell_light  Родилась
-                    td.about__cell.about__cell_bold  4 августа 1990 года
-              p.about__child.about__child_fourth.about__prompt.section__descr Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        .container.about__container
+          .about__user
+            .user
+              .user__avatar
+                .user__avatat-style
+                  +image('me.png','avatar', 'avatar')
+              -
+                var user = [
+                  ['Проживаю:', 'Казань'],
+                  ['Возраст:', '30'],
+                  ['Родилась:', '4 августа 1990 года']
+                ];
 
-      .main-slide__triangle
+              table.user__data
+                each item in user
+                  tr.user__data-row
+                    td.user__data-title  #{item[0]}
+                    td.user__data-content  #{item[1]}
+
+          .about__content
+            .about__desc Привет, меня зовут
+            .about__title Жданова Александра
+            .about__text-info
+              p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+            .about__text-school
+              div Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+
+      .hero__triangle
         .triangle
           svg.triangle__child(viewBox="0 0 100 100" preserveAspectRatio="none")
             polygon(fill="#06001e" points="0,0 100,0 78,70")
             polygon(fill="#06001e" points="0,0 100,0 78,70")
+    section.skills
+      .container.skills__container
+        .skills__top
+          h2.skills__title Чем я могу быть полезна вам
+          p.skills__subtitle.section__descr Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        .skills__bottom
+          .skills__img
+            +image('guitar.png','skills__guitar','Гитара')
+
+          ul.metrics
+            -
+              var skillsCategories = [
+                ['Front-end', [['HTML5', '-13.5s'], ['CSS3', '-6.75s'], ['Javascript', '-45.5s'], ['Jquery и Vue.js', '-13.5s']]],
+                ['Workflow', [['GIT', '-6.75s'], ['Terminal', '-13.5s'], ['Gulp', '-29.5s'], ['Webpack', '-20s']]]
+              ]
+            each category in skillsCategories
+              li.metrics__child
+                h3.metrics__title #{category[0]}
+                ul.metrics__list
+                  each metric in category[1]
+                    li.metrics__list-child
+                      svg(viewBox="0 0 100 100").metrics__list-shape
+                        circle( r="40" cx="50" cy="50" ).metrics__circle.metrics__circle_before
+                        circle( stroke="url(#gradient)" width="100%" height="100%" r="40" cx="50" cy="50" style=`animation-delay: ${metric[1]} `).metrics__circle.metrics__circle_after
+                        linearGradient(id="gradient")
+                          stop(offset='0%' stop-color='#243FE5')
+                          stop(offset='100%' stop-color='#0788f2')
+                        .metrics__list-title #{metric[0]}
+              //+image('skills-bg.png','skills__bg',"Граффити")
+      //ul.skills
+      //  each category in skillsCategories
+      //    li.skills__item
+      //      .skills-row
+      //        .skills-row__title #{category[0]}
+      //        ul.skills-row__list
+      //          each skill in category[1]
+      //            li.skills-row__item
+      //              .skill #{skill}
+      //                svg(viewBox='0 0 100 100').skill__circle-shape
+      //                  circle(cx='50' cy='50' r='40').skill__circle.skill__circle--layer--under
+      //                  circle(cx='50' cy='50' r='40' stroke='url(#gradient)').skill__circle.skill__circle--layer--above
+      //                  linearGradient(id='gradient' x1='0%' y1='0%' x2='100%' y2='0%')
+      //                    stop(offset='0%' stop-color='#243FE5')
+      //                    stop(offset='100%' stop-color='#0788f2')
+      //
+
+    //section.skills
+    //  .container
+    //    .skills__wrap
+    //      .skills__top
+    //        h2.skills__title Чем я могу быть полезна вам
+    //        p.skills__subtitle.section__descr Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+    //      .skills__bottom
+    //        .skills__img
+    //          +image('guitar.png','skills__guitar','Guitar')
+    //        .skills__metrics
+    //          //+metrics('metrics', 'metrics')
+    //          ul.metrics
+    //            -
+    //              var metrics = [
+    //                ['Front-end', [['HTML5', '-23s'], ['CSS3', '-12s'], ['Javascript', '-40s'], ['Jquery и Vue.js', '-45s']]],
+    //                ['Workflow', [['GIT', '-30s'], ['Terminal', '-20s'], ['Gulp', '-15s'], ['Webpack', '-10s']]]
+    //              ]
+    //            each item in metrics
+    //              li.metrics__child
+    //                h3.metrics__title #{item[0]}
+    //                ul.metrics__list
+    //                  each metric in item[1]
+    //                    li.metrics__list-child
+    //                      svg(viewBox="0 0 150 150" preserveAspectRatio="none").metrics__list-shape
+    //                        circle( r="65" cx="75" cy="75" ).metrics__circle.metrics__circle_before
+    //                        circle( stroke="url(#status)" width="100%" height="100%" r="65" cx="75" cy="75").metrics__circle.metrics__circle_after
+    //                        linearGradient(id="status")
+    //                          stop(offset="0%" stop-color="#0089f2")
+    //                          stop(offset="100%" stop-color="#003dea")
+    //                        .metrics__list-title #{metric[0]}
+    //
+    //section.portfolio
+    //  .container
+    //    .portfolio__wrap
+    //      span.portfolio__title.section__title Мои работы
+    //      .portfolio__slider
+    //        .slider-work
+    //          -
+    //            var works = [
+    //              ['work-1', 'Сайт школы образования', ['HTML', 'CSS', 'Javasript'], 'Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!', 'https://loftschool.com']
+    //            ]
+    //          each item in works
+    //            .slider-work__left
+    //              .slider-work__main
+    //                +image(`${item[0]}.jpg`,'slider-work__img',`${item[1]}`)
+    //                - for (var i = 0; i < works.length; i++)
+    //                .slider-work__main-number= 2
+    //              .slider-work__status
+    //                button.slider-work__status-child.slider-work__status-child_active
+    //                  +image(`${item[0]}.jpg`,'slider-work__preview',`${item[1]}`)
+    //                button.slider-work__status-child
+    //                  +image(`work-2.jpg`,'slider-work__preview',`${item[1]}`)
+    //                button.slider-work__status-child
+    //                  +image(`work-3.jpg`,'slider-work__preview',`${item[1]}`)
+    //                button.slider-work__status-child
+    //                  +image(`work-4.jpg`,'slider-work__preview',`${item[1]}`)
+    //                .slider-work__nav
+    //                  button.slider__button.slider-work__button.status-work__button-next >
+    //                  button.slider__button.slider__button_disabled.slider-work__button.status-work__button-prev.slider-work__button_disabled <
+    //            .slider-work__right
+    //              .slider-work__info
+    //                .slider-work__tool
+    //                  each tool in item[2]
+    //                    span.slider-work__tool-child #{tool}
+    //                span.slider-work__info-title #{item[1]}
+    //                p.slider-work__info-descr.section__descr #{item[3]}
+    //                a(href=`${item[4]}` target="_blank").slider-work__link
+    //                  .slider-work__link-icon
+    //                    +icon(`link`,'link-icon')
+    //                  .slider-work__link-title Посмотреть сайт

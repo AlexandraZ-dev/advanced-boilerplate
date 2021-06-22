@@ -4,7 +4,7 @@ mixin icon(name, className)
     use(xlink:href=`sprite.svg#${icon.id.replace('-usage', '')}`)
 
 mixin image(path, className)
-  img(src=require(`images/${path}`).default class=className)
+  img(src=require(`images/content/${path}`).default class=className)
 
 mixin nav(className, items)
     nav(class=`${className}`)
@@ -27,3 +27,27 @@ mixin socials(className)
           li(class=`${className}__child`)
             a(class=`${className}__link ${className}__link_${item[0]}` href=`${item[1]}` target="_blank")
               +icon(item[0],`${className}__icon` )
+
+mixin metrics(className)
+  ul(class=`${className}`)
+    -
+      var metrics = [
+        ['Front-end', [['HTML5', '-70s'], ['CSS3', '-60s'], ['Javascript', '-40s'], ['Jquery и Vue.js', '-45s']]],
+        ['Workflow', [['GIT', '-30s'], ['Terminal', '-20s'], ['Gulp', '-15s'], ['Webpack', '-10s']]]
+      ]
+    each item in metrics
+      li(class=`${className}__child`)
+        h3(class=`${className}__title`) #{item[0]}
+        ul(class=`${className}__list`)
+          each metric in item[1]
+            li(class=`${className}__list-child`)
+              svg(viewBox="0 0 150 150" preserveAspectRatio="none" class=`${className}__list-shape`)
+                circle( r="65" cx="75" cy="75" class=`${className}__circle ${className}__circle_before`)
+                circle( stroke="url(#status)" width="100%" height="100%" r="65" cx="75" cy="75" style=`animation-delay: ${metric[1]} ` class=`${className}__circle ${className}__circle_after`)
+                linearGradient(id="status" class=`${className}__list-title`)
+                  stop(offset="0%" stop-color="#0089f2")
+                  stop(offset="100%" stop-color="#003dea")
+                    #{metric[0]}
+
+
+
