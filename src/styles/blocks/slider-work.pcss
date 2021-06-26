@@ -82,11 +82,11 @@
     &-next {
       transform: rotate(180deg);
 
-      &:hover,
-      &:focus,
-      &:active {
-        fill: #5500F2;
-      }
+    &:hover,
+    &:focus,
+    &:active {
+      fill: #5500F2;
+    }
 
     &-prev {
 
@@ -113,8 +113,8 @@
       color: #283340;
       background-color: #ebeff3;
 
-      & :not(:last-child) {
-        margin-right: 24px;
+      &:not(:last-child) {
+        margin-right: 8px;
       }
     }
   }
@@ -189,4 +189,8 @@
   top: 17.956787109375px;
   border-radius: 0;
   fill: white;
+  &:hover {
+    fill: #5500F2;
+    border: 3px;
+  }
 }

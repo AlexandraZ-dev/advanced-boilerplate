@@ -122,6 +122,7 @@ html(lang="en")
                     .slider-work__tool
                       each tool in item[2]
                         span.slider-work__tool-child #{tool}
+                        span.slider-work__tool-child #{tool}
                     span.slider-work__info-title #{item[1]}
                     p.slider-work__info-descr.section__descr #{item[3]}
                     a(href=`${item[4]}` target="_blank").slider-work__link
@@ -135,7 +136,7 @@ html(lang="en")
           .feedback__top
             h2.feedback__title.section__title.section__title_light Что обо мне говорят
             .slider-feedback__nav
-              button.slider__button.slider__button_disabled.slider-feedback__button.slider-feedback__button-next
+              button.slider__button.slider-feedback__button.slider-feedback__button-next
                 +icon('arrow-down', 'arrow-down')
               button.slider__button.slider-feedback__button.slider-feedback__button-prev
                 +icon('arrow-down', 'arrow-down')
