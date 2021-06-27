@@ -1,0 +1,34 @@
+.skill {
+    position: relative;
+    width: 138px;
+    height: 138px;
+}
+
+.skill__circle {
+    fill: transparent;
+
+    &--layer--under {
+        stroke: #313131;
+        stroke-width: 5px;
+    }
+
+    &--layer--above {
+        stroke-width: 20px;
+        stroke-dasharray: 201;
+        stroke-dashoffset: 129;
+    }
+}
+
+.skill__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    line-height: 32.68px;
+    font-size: 18px;
+    color: rgba($text-color, 5);
+    padding: 14px;
+}
+
+

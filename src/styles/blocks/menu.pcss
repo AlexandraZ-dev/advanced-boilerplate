@@ -1,0 +1,25 @@
+.menu {
+  color: #ffffff;
+  transition: 0.2s;
+  font-weight: 600;
+  &__list {
+    display: flex;
+  }
+  &__link {
+    text-decoration: none;
+  }
+  &__child {
+    &:not(:last-child) {
+      margin-right: 60px;
+    }
+    &:hover,
+    &:focus {
+      transition: 0.2s;
+      color: #008bff;
+    }
+    &:active {
+      transition: 0.2s;
+      opacity: 0.5;
+    }
+  }
+}

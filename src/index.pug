@@ -1,0 +1,180 @@
+include ./mixins.pug
+
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Portfolio | Alexandra
+  body
+    .welcome-section
+      section.hero
+        .container
+          .hero__container
+            header.header
+              a.logo(href='#') ЖА
+              +nav('menu', ["Обо мне", "Навыки", "Работы", "Отзывы"])
+              +socials('socials')
+
+            .userinfo
+              .userinfo__title Личный сайт <br> веб-разработчика
+              .userinfo__name Жданова <br> Александра
+
+            .hero__bottom-buttons
+              button.scroll-down-btn Скролл
+              +icon('scroll','scroll')
+
+      section.about
+        .container
+          .about__container
+            .about__user
+              .user
+                .user__avatar
+                  .user__avatat-style
+                    +image('me.png','avatar', 'avatar')
+                -
+                  var user = [
+                    ['Проживаю:', 'Казань'],
+                    ['Возраст:', '30'],
+                    ['Родилась:', '4 августа 1990 года']
+                  ];
+
+                table.user__data
+                  each item in user
+                    tr.user__data-row
+                      td.user__data-title  #{item[0]}
+                      td.user__data-content  #{item[1]}
+
+            .about__content
+              .about__desc Привет, меня зовут
+              .about__title Жданова Александра
+              .about__text-info
+                p Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+              .about__text-school
+                div Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+
+      .hero__triangle
+        .triangle
+          svg.triangle__child(viewBox="0 0 100 100" preserveAspectRatio="none")
+            polygon(fill="#06001e" points="0,0 100,0 78,70")
+            polygon(fill="#06001e" points="0,0 100,0 78,70")
+    section.skills
+      .container.skills__container
+        .skills__top
+          h2.skills__title Чем я могу быть полезна вам
+          p.skills__subtitle.section__descr Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        .skills__bottom
+          .skills__img
+            +image('guitar.png','skills__guitar','Гитара')
+            +image('shadow.png','skills__bg',"Тень")
+
+          ul.metrics
+            -
+              var skillsCategories = [
+                ['Front-end', [['HTML5', '-13.5s'], ['CSS3', '-6.75s'], ['Javascript', '-45.5s'], ['Jquery и Vue.js', '-13.5s']]],
+                ['Workflow', [['GIT', '-6.75s'], ['Terminal', '-13.5s'], ['Gulp', '-29.5s'], ['Webpack', '-20s']]]
+              ]
+            each category in skillsCategories
+              li.metrics__child
+                h3.metrics__title #{category[0]}
+                ul.metrics__list
+                  each metric in category[1]
+                    li.metrics__list-child
+                      svg(viewBox="0 0 100 100" preserveAspectRatio="none").metrics__list-shape
+                        circle( r="40" cx="50" cy="50" ).metrics__circle.metrics__circle_before
+                        circle( stroke="url(#gradient)" width="100%" height="100%" r="40" cx="50" cy="50" style=`animation-delay: ${metric[1]} `).metrics__circle.metrics__circle_after
+                        linearGradient(id="gradient")
+                          stop(offset='0%' stop-color='#243FE5')
+                          stop(offset='100%' stop-color='#0788f2')
+                        .metrics__list-title #{metric[0]}
+
+    section.portfolio
+      .container
+        .portfolio__wrap
+          span.portfolio__title.section__title Мои работы
+          .portfolio__slider
+            .slider-work
+              -
+                var works = [
+                  ['work-1', 'Сайт школы образования', ['HTML', 'CSS', 'Javasript'], 'Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!', 'https://loftschool.com']
+                ]
+              each item in works
+                .slider-work__left
+                  .slider-work__main
+                    +image(`${item[0]}.jpg`,'slider-work__img',`${item[1]}`)
+                    - for (var i = 0; i < works.length; i++)
+                      .slider-work__main-number= 2
+                  .slider-work__status
+                    button.slider-work__status-child.slider-work__status-child_active
+                      +image(`${item[0]}.jpg`,'slider-work__preview',`${item[1]}`)
+                    button.slider-work__status-child
+                      +image(`work-2.jpg`,'slider-work__preview',`${item[1]}`)
+                    button.slider-work__status-child
+                      +image(`work-3.jpg`,'slider-work__preview',`${item[1]}`)
+                    button.slider-work__status-child
+                      +image(`work-4.jpg`,'slider-work__preview',`${item[1]}`)
+                    .slider-work__nav
+                      button.slider__button.slider-work__button.slider-work__button-next
+                        +icon('arrow-down', 'arrow-down')
+                      button.slider__button.slider-work__button.slider-work__button-prev
+                        +icon('arrow-down', 'arrow-down')
+                .slider-work__right
+                  .slider-work__info
+                    .slider-work__tool
+                      each tool in item[2]
+                        span.slider-work__tool-child #{tool}
+                    span.slider-work__info-title #{item[1]}
+                    p.slider-work__info-descr.section__descr #{item[3]}
+                    a(href=`${item[4]}` target="_blank").slider-work__link
+                      .slider-work__link-icon
+                        +icon(`link`,'link-icon')
+                      .slider-work__link-title Посмотреть сайт
+
+    section.feedback.feedback__child
+      .container
+        .feedback__wrap
+          .feedback__top
+            h2.feedback__title.section__title.section__title_light Что обо мне говорят
+            .slider-feedback__nav
+              button.slider__button.slider-feedback__button.slider-feedback__button-next
+                +icon('arrow-down', 'arrow-down')
+              button.slider__button.slider-feedback__button.slider-feedback__button-prev
+                +icon('arrow-down', 'arrow-down')
+          .feedback__slider
+            .slider-feedback
+              -
+                var feedback = [
+                  ['Эта девушка проходила обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!', 'teacher-1.png', 'Ковальчук Дмитрий', 'Основатель Loftschool'],
+                  ['Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах', 'teacher-2.png', 'Владимир Сабанцев', 'Преподаватель']
+                ]
+              each item in feedback
+                .slider-feedback__child
+                  p.slider-feedback__quote #{item[0]}
+                  .slider-feedback__info
+                    .slider-feedback__info-avatar
+                      +image(`${item[1]}`,'slider-feedback__image',`Фото: ${item[1]}`)
+                    .slider-feedback__info-text
+                      p.slider-feedback__info-name #{item[2]}
+                      p.slider-feedback__info-post #{item[3]}
+
+    footer.footer
+      .container
+        .footer__wrap
+          .footer__left
+            span.footer__copyright © 2021
+            .footer__author
+              h3.footer__author-name Жданова Александра
+              span.footer__author-project Личный сайт <br> веб-разработчика
+          .footer__right
+            .footer__nav
+              +nav('menu', ["Обо мне", "Навыки", "Работы", "Отзывы"])
+            .footer__info
+              .footer__info-project
+                p.footer__info-descr Этот сайт я сделала в рамках обучения в Школе онлайн образования Loftschool
+                .footer__info-social
+                  +socials('socials')
+              .footer__info-project
+                .footer__quote
+                  p.footer__info-descr Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете
+                span.footer__quote-author Martin Golding

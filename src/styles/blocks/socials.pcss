@@ -1,0 +1,28 @@
+.socials {
+  &__list {
+    display: flex;
+  }
+  &__child {
+    &:not(:last-child) {
+      margin-right: 44px;
+    }
+  }
+  &__link {
+    display: flex;
+    &:hover .socials__icon,
+    &:focus .socials__icon {
+      transition: 0.3s;
+      fill: #008bff;
+    }
+    &:active .socials__icon {
+      transition: 0.3s;
+      opacity: 0.5;
+    }
+  }
+  &__icon {
+    width: 25px;
+    height: 25px;
+    fill: $text-color;
+    transition: 0.3s;
+  }
+}

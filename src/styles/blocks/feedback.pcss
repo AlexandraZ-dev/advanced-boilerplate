@@ -1,0 +1,44 @@
+.feedback {
+  position: relative;
+  padding: 284px 0;
+  background: #090224;
+  z-index: 1;
+  &__child {
+    &:not(:first-child) {
+      margin-top: 175px;
+    }
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #0a001d 0%, rgba(10, 0, 29, 0) 100%);
+    z-index: -1;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../images/content/rockFest2.png) 37% bottom no-repeat;
+    width: 2800px;
+    max-width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  &__wrap {
+    width: 60%;
+  }
+  &__title {
+    margin-right: 95px;
+  }
+  &__top {
+    display: flex;
+  }
+  &__slider {
+    margin-top: 100px;
+  }
+}

@@ -1,0 +1,69 @@
+.metrics {
+  &__child {
+    &:not(:first-child) {
+      margin-top: 41px;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0a001d;
+  }
+
+  &__list {
+    position: relative;
+    display: flex;
+    margin-top: 38px;
+    &-child {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:not(:last-child) {
+        margin-right: 66px;
+      }
+    }
+
+    &-shape {
+      width: 132.5px;
+      height: 132.5px;
+      transform: rotate(-180deg);
+    }
+
+    &-title {
+      position: absolute;
+      text-align: center;
+      width: 110px;
+      font-size: 18px;
+      font-weight: 700;
+      opacity: 0.5;
+      color: #0a001d;
+    }
+  }
+
+  &__circle {
+    fill: none;
+    &_before {
+      stroke: #eaeaea;
+      stroke-width: 6px;
+    }
+
+    &_after {
+      stroke-width: 15px;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: fill 100s linear infinite;
+      animation-play-state: paused;
+    }
+  }
+}
+
+@keyframes fill {
+  from {
+    stroke-dashoffset: 390;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
